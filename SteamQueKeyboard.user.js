@@ -28,47 +28,38 @@ document.addEventListener('keydown', function(e) {
         //up
         case 38:
 
-                if (document.querySelector("body > div.responsive_page_frame.with_header > div.responsive_page_content > div.responsive_page_template_content > div.game_page_background.game > div.page_content_ctn > div.block > div.queue_overflow_ctn > div > div > div.queue_control_button.queue_btn_follow > div.btnv6_blue_hoverfade.btn_medium.queue_btn_active").style.display == "none") {
+                if (document.querySelector("#queueBtnFollow > div.btnv6_blue_hoverfade.btn_medium.queue_btn_inactive").style.display != "none") {
                      // click to follow
-                    document.querySelector("body > div.responsive_page_frame.with_header > div.responsive_page_content > div.responsive_page_template_content > div.game_page_background.game > div.page_content_ctn > div.block > div.queue_overflow_ctn > div > div > div.queue_control_button.queue_btn_follow > div.btnv6_blue_hoverfade.btn_medium.queue_btn_inactive").click();
+                    document.querySelector("#queueBtnFollow > div.btnv6_blue_hoverfade.btn_medium.queue_btn_inactive").click();
                 } else {
                     //Click to UNfollow
-                    document.querySelector("body > div.responsive_page_frame.with_header > div.responsive_page_content > div.responsive_page_template_content > div.game_page_background.game > div.page_content_ctn > div.block > div.queue_overflow_ctn > div > div > div.queue_control_button.queue_btn_follow > div.btnv6_blue_hoverfade.btn_medium.queue_btn_active").click();
+                    document.querySelector("#queueBtnFollow > div.btnv6_blue_hoverfade.btn_medium.queue_btn_active").click();
                 }
 
             break;
 
         //right
         case 39:
-
-            //if the que needs refreshed, refresh it bb
-            if (document.querySelector("#refresh_queue_btn > span") != null) {
-                if (document.querySelector("body > div.responsive_page_frame.with_header > div.responsive_page_content > div.responsive_page_template_content > div.page_header_ctn > div.page_content_ctn.discovery_queue_content_ctn > div > div.discovery_queue_apps > div.discover_queue_empty").style.display != "none") {
-                    document.querySelector("#refresh_queue_btn").click();
-                    window.setTimeout(location.reload(), 45678);
-                    break;
-                }
+            //if in que go next
+            if (document.querySelector("#nextInDiscoveryQueue > div.btn_next_in_queue.btn_next_in_queue_trigger") != null){
+                document.querySelector("#nextInDiscoveryQueue > div.btn_next_in_queue.btn_next_in_queue_trigger").click();
+                break;
             }
-
-            //if the que needs resumed, resume it bb
+            //if the que needs re-started
+            if (document.querySelector("#refresh_queue_btn") != null){
+                document.querySelector("#refresh_queue_btn").click();
+                break;
+            }
+            //if the que needs started, resume it bb
             if (document.querySelector("#discovery_queue_start_link") != null){
-                console.log("logb");
                 document.querySelector("#discovery_queue_start_link").click();
                 break;
             }
-
             //if you aren't in the que, hop in bb.
-            if (document.querySelector("body > div.responsive_page_frame.with_header > div.responsive_page_content > div.responsive_page_template_content > div.game_page_background.game > div.page_content_ctn > div.block > div.queue_overflow_ctn > div > div > a") != null){
-                document.querySelector("body > div.responsive_page_frame.with_header > div.responsive_page_content > div.responsive_page_template_content > div.game_page_background.game > div.page_content_ctn > div.block > div.queue_overflow_ctn > div > div > a").click();
+            if (document.querySelector("#queueActionsCtn > a") != null){
+                document.querySelector("#queueActionsCtn > a").click();
                 break;
             }
-
-            if (document.querySelector("body > div.responsive_page_frame.with_header > div.responsive_page_content > div.responsive_page_template_content > div.game_page_background.game > div.page_content_ctn > div.block > div.queue_overflow_ctn > div > div.queue_actions_ctn > div.next_in_queue_area > div.btn_next_in_queue.btn_next_in_queue_trigger") != null){
-
-                document.querySelector("body > div.responsive_page_frame.with_header > div.responsive_page_content > div.responsive_page_template_content > div.game_page_background.game > div.page_content_ctn > div.block > div.queue_overflow_ctn > div > div.queue_actions_ctn > div.next_in_queue_area > div.btn_next_in_queue.btn_next_in_queue_trigger").click();
-                break;
-            }
-
             //if all else fails refresh the damn page
             location.reload();
             break;
